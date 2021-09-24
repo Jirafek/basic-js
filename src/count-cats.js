@@ -15,12 +15,10 @@ import { NotImplementedError } from '../extensions/index.js';
  *
  */
 export default function countCats(matrix) {
-  function countCats(backyard) {
-    let arr = backyard.toString().split(",");
+    let arr = matrix.toString().split(",");
     let sum = 0;
     for(let i=0;i<arr.length;i++) {
       sum += arr[i] === "^^" ? 1 : 0 
     }
     return sum
-  }
 }
