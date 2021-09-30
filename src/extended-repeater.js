@@ -16,6 +16,7 @@ import { NotImplementedError } from '../extensions/index.js';
  *
  */
 export default function repeater(str, options) {
+  str = String(str);
   var word = '';
   let repeat = 0;
   let separ = '';
@@ -30,7 +31,7 @@ export default function repeater(str, options) {
       separ+=options[key];
     }
     if(key === 'addition') {
-      addit+=options[key];
+      addit+=String(options[key]);
     }
     if(key === 'additionRepeatTimes') {
       rep_add+=options[key];

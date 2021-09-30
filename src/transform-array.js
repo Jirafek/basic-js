@@ -14,22 +14,21 @@ import { NotImplementedError } from '../extensions/index.js';
  * 
  */
 export default function transform(arr) {
-    if(!Array.isArray(arr)) return "'arr' parameter must be an instance of the Array!";
+    if(!Array.isArray(arr)) throw new Error("'arr' parameter must be an instance of the Array!");
   for(let i=0;i<arr.length;i++) {
     if(arr[i] == '--discard-prev') {
-        arr.splice(i-1, 1);
         arr.splice(i-1, 1);
     }
     if(arr[i] == '--discard-next') {
         arr.splice(i+1, 1);
-        arr.splice(i, 1);
     }
     if(arr[i] == '--double-next') {
-        arr.splice(i, 1, arr[i+1]);
+        arr.splice(i, 0, arr[i+1]);
     }
     if(arr[i] == '--double-prev') {
-        arr.splice(i, 1, arr[i-1]);
+        arr.splice(i, 0, arr[i-1]);
     }
 }
-return arr
+let filter_arr = arr.filter(word => word != '--discard-prev' && word != '--discard-next' && word != '--double-next' && word != '--double-prev');
+return filter_arr
 }
