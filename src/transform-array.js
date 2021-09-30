@@ -14,17 +14,12 @@ import { NotImplementedError } from '../extensions/index.js';
  * 
  */
 export default function transform(arr) {
-    if (!Array.isArray(arr)) {
-        throw new Error("'arr' parameter must be an instance of the Array!");
-      }
+    if (!Array.isArray(arr)) throw new Error("'arr' parameter must be an instance of the Array!");
       let newArr = [...arr];
     
       for (let i = 0; i < newArr.length; i++) {
-        if (
-          newArr.indexOf("--double-prev") - newArr.indexOf("--discard-next") ===
-            2 ||
-          newArr.indexOf("--discard-prev") - newArr.indexOf("--discard-next") === 2
-        ) {
+        if (newArr.indexOf("--double-prev") - newArr.indexOf("--discard-next") === 2 ||
+          newArr.indexOf("--discard-prev") - newArr.indexOf("--discard-next") === 2) {
           const indexNext = newArr.indexOf("--discard-next") + 1;
           const index = newArr.indexOf("--discard-next");
           const prev = newArr.indexOf("--discard-next") + 2;
